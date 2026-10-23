@@ -11,31 +11,31 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ExpenseController {
 
-    private final ExpenseRepository repo;
+    private final ExpenseRepository expenseRepo;
 
     @PostMapping
     public Expense add(@Valid @RequestBody Expense e) {
-        return repo.save(e);
+        return expenseRepo.save(e);
     }
 
     @GetMapping
     public List<Expense> all(@RequestParam(required = false) String category) {
-        return category == null ? repo.findAll() : repo.findByCategory(category);
+        return category == null ? expenseRepo.findAll() : expenseRepo.findByCategory(category);
     }
 
     @PutMapping("/{id}")
     public Expense update(@PathVariable Long id, @Valid @RequestBody Expense e) {
         e.setId(id);
-        return repo.save(e);
+        return expenseRepo.save(e);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        repo.deleteById(id);
+        expenseRepo.deleteById(id);
     }
 
     @GetMapping("/summary")
     public List<Object[]> summary() {
-        return repo.totalByCategory();
+        return expenseRepo.totalByCategory();
     }
 }
