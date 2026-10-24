@@ -43,3 +43,7 @@ A REST API for tracking personal expenses, built with Java and Spring Boot.
 
 ## Built With
 IntelliJ IDEA
+
+
+## Author
+Ashutosh Pani
